@@ -17,5 +17,5 @@ jobs:
 
       - name: build and push
         run: |
-          docker build . -t image-test:latest
+          docker build . -t tomasstorc/image-test:latest
           docker push tomasstorc/image-test:latest
