@@ -2,6 +2,7 @@ on:
   push:
     branches:
       - main
+
 jobs:
   docker:
     runs-on: ubuntu-latest
@@ -15,7 +16,11 @@ jobs:
           username: ${{ secrets.DOCKER_NAME }}
           password: ${{ secrets.DOCKER_PASS}}
 
-      - name: build and push
-        run: |
-          docker build . -t tomasstorc/image-test:latest
-          docker push tomasstorc/image-test:latest
+      - name: run tests
+        run: npm run test
+
+      - name: docker build
+        run: docker build . -t tomasstorc/image-test:latest
+
+      - name: docker push
+        run: docker push tomasstorc/image-test:latest
