@@ -1,5 +1,8 @@
 const express = require("express");
+const appInsights = require("applicationinsights");
+
 const app = express();
+appInsights.start();
 
 app.get("/", function (req, res) {
   res.send("Hello World!");
